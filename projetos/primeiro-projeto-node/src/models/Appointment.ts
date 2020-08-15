@@ -7,7 +7,8 @@ class Appointment {
 
   date: Date;
 
-  constructor(provider: string, date: Date) {
+  // Recebe todas as propriedades menos o 'id'
+  constructor({ provider, date }: Omit<Appointment, 'id'>) {
     this.id = v4();
     this.provider = provider;
     this.date = date;
