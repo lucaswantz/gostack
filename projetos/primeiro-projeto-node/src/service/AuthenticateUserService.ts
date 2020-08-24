@@ -3,6 +3,8 @@ import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import authConfig from '../config/auth';
 
+import AppError from '../errors/AppError';
+
 import User from '../models/User';
 
 interface Request {
@@ -24,14 +26,14 @@ class AuthenticateUserService {
     const user = await userRepository.findOne({ where: { email } });
 
     if (!user) {
-      throw new Error(errorMessage);
+      throw new AppError(errorMessage, 401);
     }
 
     // user.password - Senha criptografada
     // password - Senha não-criptografada
     const passwordMatched = await compare(password, user.password);
     if (!passwordMatched) {
-      throw new Error(errorMessage);
+      throw new AppError(errorMessage, 401);
     }
 
     // Primeiro parametro: Payload - Informações a serem usadas no frontend, menos dados sensíveis.
