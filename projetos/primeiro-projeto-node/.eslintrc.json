@@ -20,9 +20,13 @@
   },
   "plugins": ["@typescript-eslint", "prettier"],
   "rules": {
+    "no-udescore-dangle": "off",
     "camelcase": "off",
     "prettier/prettier": "error",
     "class-methods-use-this": "off",
+    "@typescript-eslint/no-unused-vars": ["error", {
+      "argsIgnorePattern": "_"
+    }],
     "import/extensions": [
       "error",
       "ignorePackages",
