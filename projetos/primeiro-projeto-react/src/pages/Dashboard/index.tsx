@@ -25,6 +25,7 @@ const Dashboard: React.FC = () => {
 
     if (!newRepo) {
       setInputError('Digite o autor/nome do repositório.');
+      return;
     }
 
     try {
@@ -35,6 +36,7 @@ const Dashboard: React.FC = () => {
 
       setRepositories([...repositories, repository]);
       setNewRepo('');
+      setInputError('');
     } catch (error) {
       setInputError('Erro na busca deste repositório');
     }
@@ -45,7 +47,7 @@ const Dashboard: React.FC = () => {
       <img src={logoImg} alt="Github Explorer" />
       <Title>Explore repositórios no Github.</Title>
 
-      <Form onSubmit={handleAddRepository}>
+      <Form hasError={!!inputError} onSubmit={handleAddRepository}>
         <input value={newRepo} onChange={e => setNewRepo(e.target.value)} placeholder="Digite o nome do repositório" />
         <button type="submit">Pesquisar</button>
       </Form>
