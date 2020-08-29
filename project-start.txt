@@ -1,0 +1,35 @@
+// REACT NATIVE
+yarn add eslint@6.8.0 -D
+yarn add eslint-plugin-react@^7.19.0 -D
+yarn add @typescript-eslint/eslint-plugin@latest -D
+yarn add eslint-config-airbnb@latest -D
+yarn add eslint-plugin-import@^2.20.1 -D
+yarn add eslint-plugin-jsx-a11y@^6.2.3 -D
+yarn add eslint-plugin-react-hooks@^2.5.0 -D
+yarn add @typescript-eslint/parser@latest -D
+yarn add prettier -D
+yarn add eslint-config-prettier -D
+yarn add eslint-plugin-prettier -D
+
+// REACT JS
+yarn add eslint@6.8.0 -D
+yarn add eslint-plugin-react@^7.19.0 -D
+yarn add @typescript-eslint/eslint-plugin@latest -D
+yarn add eslint-config-airbnb@latest -D
+yarn add eslint-plugin-import@^2.20.1 -D
+yarn add eslint-plugin-jsx-a11y@^6.2.3 -D
+yarn add eslint-plugin-react-hooks@^2.5.0 -D 
+yarn add @typescript-eslint/parser@latest -D
+yarn add prettier -D
+yarn add eslint-config-prettier -D
+yarn add eslint-plugin-prettier -D
+
+// NODE JS
+yarn add eslint@6.8.0 -D
+yarn add @typescript-eslint/eslint-plugin@latest -D
+yarn add eslint-config-airbnb-base@latest -D
+yarn add eslint-plugin-import@^2.21.2 -D
+yarn add @typescript-eslint/parser@latest -D
+yarn add prettier -D
+yarn add eslint-config-prettier -D
+yarn add eslint-plugin-prettier -D
