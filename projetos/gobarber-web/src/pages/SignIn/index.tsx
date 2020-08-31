@@ -4,7 +4,7 @@ import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
-import AuthContext from '../../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 import getValidationErrors from '../../utils/getValidationsErrors';
 
 import logoImg from '../../assets/logo.svg';
@@ -14,32 +14,46 @@ import Button from '../../components/Button';
 
 import { Container, Content, Background } from './styles';
 
+interface SignInFormData {
+  email: string;
+  password: string;
+}
+
 const Signin: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const auth = useContext(AuthContext);
+  const { signIn } = useContext(AuthContext);
 
-  const handleSubmit = useCallback(async (data: object) => {
-    try {
-      // Zera os erros da telas
-      formRef.current?.setErrors({});
+  const handleSubmit = useCallback(
+    async (data: SignInFormData) => {
+      try {
+        // Zera os erros da telas
+        formRef.current?.setErrors({});
 
-      // Definição do que será validado em cada campo
-      const schema = Yup.object().shape({
-        email: Yup.string().required('E-mail obrigatório').email('Digite um e-mail válido'),
-        password: Yup.string().required('Senha obrigatória'),
-      });
+        // Definição do que será validado em cada campo
+        const schema = Yup.object().shape({
+          email: Yup.string().required('E-mail obrigatório').email('Digite um e-mail válido'),
+          password: Yup.string().required('Senha obrigatória'),
+        });
 
-      // Chamada da validação com algumas configurações
-      await schema.validate(data, {
-        abortEarly: false,
-      });
-    } catch (err) {
-      // Função para transformar os errors obtidos em um objeto
-      const errors = getValidationErrors(err);
-      formRef.current?.setErrors(errors);
-    }
-  }, []);
+        // Chamada da validação com algumas configurações
+        await schema.validate(data, {
+          abortEarly: false,
+        });
+
+        // Chamada do metódo de context para autentica ção
+        signIn({
+          email: data.email,
+          password: data.password,
+        });
+      } catch (err) {
+        // Função para transformar os errors obtidos em um objeto
+        const errors = getValidationErrors(err);
+        formRef.current?.setErrors(errors);
+      }
+    },
+    [signIn],
+  );
 
   return (
     <Container>
