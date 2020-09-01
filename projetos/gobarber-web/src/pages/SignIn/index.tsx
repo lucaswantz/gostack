@@ -4,7 +4,8 @@ import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
-import { useAuth } from '../../hooks/AuthContext';
+import { useAuth } from '../../hooks/auth';
+import { useToast } from '../../hooks/toast';
 import getValidationErrors from '../../utils/getValidationsErrors';
 
 import logoImg from '../../assets/logo.svg';
@@ -23,6 +24,7 @@ const Signin: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   const { signIn } = useAuth();
+  const { addToast } = useToast();
 
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
@@ -42,7 +44,7 @@ const Signin: React.FC = () => {
         });
 
         // Chamada do metódo de context para autentica ção
-        signIn({
+        await signIn({
           email: data.email,
           password: data.password,
         });
@@ -53,7 +55,7 @@ const Signin: React.FC = () => {
           formRef.current?.setErrors(errors);
         }
 
-        // Disparar um toast
+        addToast();
       }
     },
     [signIn],
