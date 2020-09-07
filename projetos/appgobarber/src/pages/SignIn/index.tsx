@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, KeyboardAvoidingView, Platform, View, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import { useNavigation } from '@react-navigation/native';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -17,6 +18,8 @@ import {
 } from './styles';
 
 const SignIn: React.FC = () => {
+  const navigation = useNavigation();
+
   return (
     <>
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined} enabled>
@@ -41,7 +44,7 @@ const SignIn: React.FC = () => {
 
             <ForgotPassword
               onPress={() => {
-                console.log('Esqueci a senha');
+                navigation.navigate('Forgot');
               }}
             >
               <ForgotPasswordText>Esqueci minha senha</ForgotPasswordText>
@@ -52,7 +55,7 @@ const SignIn: React.FC = () => {
 
       <CreateAccountButton
         onPress={() => {
-          console.log('Criar conta');
+          navigation.navigate('SignUp');
         }}
       >
         <Icon name="log-in" size={20} color="#FF9000" />
