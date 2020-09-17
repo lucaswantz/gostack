@@ -32,7 +32,7 @@ interface Issue {
 }
 
 const Repository: React.FC = () => {
-  const [repository, setRepository] = useState<Repository | null>(null);
+  const [repository, setRepository] = useState<Repository>({} as Repository);
   const [issues, setIssues] = useState<Issue[]>([]);
 
   const { params } = useRouteMatch<RepositoryParams>();
