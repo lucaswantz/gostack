@@ -32,7 +32,7 @@ interface Issue {
 }
 
 const Repository: React.FC = () => {
-  const [repository, setRepository] = useState<Repository>({} as Repository);
+  const [repository, setRepository] = useState<Repository | null>(null);
   const [issues, setIssues] = useState<Issue[]>([]);
 
   const { params } = useRouteMatch<RepositoryParams>();
@@ -47,22 +47,6 @@ const Repository: React.FC = () => {
     api.get(`repos/${params.repository}/issues`).then(response => {
       setIssues(response.data);
     });
-
-    // // OPCAO 02 - Executa um de cada vez, a segunda linha espera a primeira linha concluir
-    // async function loadData(): Promise<Void> {
-    //   // const repository = await api.get(`repos/${params.repository}`);
-    //   // const issues = await api.get(`repos/${params.repository}/issues`);
-
-    //   // Assim executa as duas no mesmo momento
-    //   const [repository, issues] = await Promise.all([
-    //     api.get(`repos/${params.repository}`),
-    //     api.get(`repos/${params.repository}/issues`),
-    //   ]);
-
-    //   console.log(repository);
-    //   console.log(issues);
-    // }
-    // loadData();
   }, [params.repository]);
 
   return (
