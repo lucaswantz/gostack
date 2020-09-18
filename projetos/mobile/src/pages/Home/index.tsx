@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View, Text, ScrollView, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import React, { useState } from 'react';
+import { View, Text, ScrollView, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import api from '../../services/api';
 
 interface Repository {
@@ -30,7 +30,7 @@ const Home: React.FC = () => {
         <TextInput
           style={style.inputText}
           value={newRepo}
-          onChangeText={(value) => setNewRepo(value)}
+          onChangeText={value => setNewRepo(value)}
           placeholder="Digite o nome do repositório"
         />
       </View>
@@ -47,8 +47,6 @@ const Home: React.FC = () => {
             <Text style={style.cardIssues}>{`Issues: ${repository.open_issues_count}`}</Text>
           </View>
         ))}
-
-
       </ScrollView>
     </View>
   );
@@ -59,14 +57,14 @@ export default Home;
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F0F0F5"
+    backgroundColor: '#F0F0F5',
   },
 
   title: {
     padding: 20,
     fontSize: 36,
-    fontWeight: "bold",
-    color: "#3a3a3a",
+    fontWeight: 'bold',
+    color: '#3a3a3a',
   },
 
   inputContainer: {
@@ -74,56 +72,56 @@ const style = StyleSheet.create({
     margin: 20,
     paddingVertical: 5,
     paddingHorizontal: 10,
-    backgroundColor: "#FFF",
+    backgroundColor: '#FFF',
     borderRadius: 15,
   },
 
   inputText: {
-    color: "#3a3a3a",
+    color: '#3a3a3a',
     fontSize: 24,
   },
 
   buttonContainer: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
 
     height: 60,
     margin: 20,
     paddingVertical: 5,
     paddingHorizontal: 10,
-    backgroundColor: "#04d361",
+    backgroundColor: '#04d361',
     borderRadius: 15,
   },
 
   buttonTitle: {
-    color: "#FFF",
+    color: '#FFF',
     fontSize: 24,
   },
 
   cardContainer: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
 
     marginVertical: 10,
     marginHorizontal: 20,
     padding: 20,
-    backgroundColor: "#FFF",
+    backgroundColor: '#FFF',
     borderRadius: 15,
   },
 
   cardTitle: {
-    color: "#000",
+    color: '#000',
     fontSize: 24,
   },
 
   cardDescription: {
-    color: "#000",
+    color: '#000',
     fontSize: 16,
     paddingVertical: 10,
   },
 
   cardIssues: {
-    color: "#000",
+    color: '#000',
     fontSize: 24,
-  }
+  },
 });
